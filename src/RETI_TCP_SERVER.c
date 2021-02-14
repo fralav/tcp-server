@@ -29,7 +29,7 @@ int main(void) {
 	}
 #endif
 
-	// Creazione della server socket
+	// Creazione socket
 	int serverSocket;
 	serverSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (serverSocket < 0) {
@@ -38,7 +38,7 @@ int main(void) {
 		return EXIT_FAILURE;
 	}
 
-	// Assegnazione indirizzo alla server socket
+	// Assegnazione indirizzo a socket
 	struct sockaddr_in serverAddress;
 	serverAddress.sin_family = AF_INET;
 	serverAddress.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -50,7 +50,7 @@ int main(void) {
 		return EXIT_FAILURE;
 	}
 
-	// Settare la socket server all'ascolto
+	// Settare socket all'ascolto
 	if (listen(serverSocket, QLEN) < 0) {
 		fprintf(stderr, "listen() failed.\n");
 		closesocket(serverSocket);
@@ -126,8 +126,6 @@ int main(void) {
 			ClearWinSock();
 			return EXIT_FAILURE;
 		}
-
-
 	}
 
 	return EXIT_SUCCESS;
